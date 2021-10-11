@@ -281,7 +281,6 @@ export type StringFilter =
     | { operator: 'equals'; values: string[]; id?: string }
     | { operator: 'notEquals'; values: string[]; id?: string }
     | { operator: 'startsWith'; value: string; id?: string }
-    | { operator: 'doesNotInclude'; value: string; id?: string }
     | { operator: 'isNull'; id?: string }
     | { operator: 'notNull'; id?: string };
 
@@ -709,20 +708,12 @@ export enum LightdashMode {
     CLOUD_BETA = 'cloud_beta',
 }
 
-export enum LightdashInstallType {
-    DOCKER_IMAGE = 'docker_image',
-    BASH_INSTALL = 'bash_install',
-    HEROKU = 'heroku',
-    UNKNOWN = 'unknown',
-}
-
 export type HealthState = {
     healthy: boolean;
     mode: LightdashMode;
     version: string;
     needsSetup: boolean;
     needsProject: boolean;
-    localDbtEnabled: boolean;
     defaultProject?: DbtProjectConfig;
     isAuthenticated: boolean;
     latest: {
@@ -1088,3 +1079,38 @@ export type CreateProject = Omit<Project, 'projectUuid'> & {
 export type UpdateProject = Omit<Project, 'projectUuid'> & {
     warehouseConnection?: CreateWarehouseCredentials;
 };
+
+export enum DashboardTileTypes {
+    SAVED_CHART = 'saved_chart',
+}
+
+type DashboardTileBase = {
+    type: DashboardTileTypes;
+    x: number;
+    y: number;
+    h: number;
+    w: number;
+};
+
+type DashboardChartTile = DashboardTileBase & {
+    type: DashboardTileTypes.SAVED_CHART;
+    properties: {
+        savedChartUuid: string | null;
+    };
+};
+
+export type Dashboard = {
+    dashboardUuid: string;
+    name: string;
+    createdAt: Date;
+    tiles: DashboardChartTile[];
+};
+
+export type DashboardBasicDetails = Pick<
+    Dashboard,
+    'dashboardUuid' | 'name' | 'createdAt'
+>;
+
+export type CreateDashboard = Pick<Dashboard, 'name' | 'tiles'>;
+export type UpdateDashboard = Pick<Dashboard, 'name'>;
+export type AddDashboardVersion = Pick<Dashboard, 'tiles'>;

@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "tiles": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "tileType": {
+                        "type": "string",
+                        "enum": ["chart"]
+                    },
+                    "tileProperties": {
+                        "oneOf": [
+                            {
+                                "$ref": "./TilePropertiesChart.json"
+                            }
+                        ]
+                    },
+                    "x": {
+                        "type": "number"
+                    },
+                    "y": {
+                        "type": "number"
+                    },
+                    "h": {
+                        "type": "number"
+                    },
+                    "w": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "tileProperties",
+                    "tileType",
+                    "saved_chart_uuid",
+                    "x",
+                    "y",
+                    "h",
+                    "w"
+                ]
+            }
+        }
+    },
+    "required": ["tiles", "name", "created_at"]
+}

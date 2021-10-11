@@ -16,7 +16,6 @@ const BigQueryForm: FC<{
             <Input
                 name="warehouse.project"
                 label="Project"
-                documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#project"
                 rules={{
                     required: 'Required field',
                 }}
@@ -25,7 +24,6 @@ const BigQueryForm: FC<{
             <Input
                 name="warehouse.dataset"
                 label="Data set"
-                documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#data-set"
                 rules={{
                     required: 'Required field',
                 }}
@@ -34,7 +32,6 @@ const BigQueryForm: FC<{
             <Input
                 name="warehouse.location"
                 label="Location"
-                documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#location"
                 rules={{
                     required: 'Required field',
                 }}
@@ -43,7 +40,6 @@ const BigQueryForm: FC<{
             <FileInput
                 name="warehouse.keyfileContents"
                 label="Key File"
-                documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#key-file"
                 rules={{
                     required: 'Required field',
                 }}
@@ -54,7 +50,6 @@ const BigQueryForm: FC<{
                 <NumericInput
                     name="warehouse.threads"
                     label="Threads"
-                    documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#threads"
                     rules={{
                         required: 'Required field',
                     }}
@@ -64,7 +59,6 @@ const BigQueryForm: FC<{
                 <NumericInput
                     name="warehouse.timeoutSeconds"
                     label="Timeout in seconds"
-                    documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#timeout-in-seconds"
                     rules={{
                         required: 'Required field',
                     }}
@@ -74,7 +68,6 @@ const BigQueryForm: FC<{
                 <SelectField
                     name="warehouse.priority"
                     label="Priority"
-                    documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#timeout-in-seconds"
                     options={[
                         {
                             value: 'interactive',
@@ -94,7 +87,6 @@ const BigQueryForm: FC<{
                 <NumericInput
                     name="warehouse.retries"
                     label="Retries"
-                    documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#retries"
                     rules={{
                         required: 'Required field',
                     }}
@@ -103,7 +95,6 @@ const BigQueryForm: FC<{
                 <NumericInput
                     name="warehouse.maximumBytesBilled"
                     label="Maximum bytes billed"
-                    documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#maximum-bytes-billed"
                     rules={{
                         required: 'Required field',
                     }}

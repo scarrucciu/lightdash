@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "saved_chart_uuid": {
+            "type": "string",
+            "format": "uuid"
+        }
+    },
+    "required": ["saved_chart_uuid"]
+}

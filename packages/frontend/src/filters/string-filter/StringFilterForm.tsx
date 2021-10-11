@@ -7,7 +7,6 @@ export const defaultValuesForNewStringFilter: {
 } = {
     equals: { operator: 'equals', values: [] },
     notEquals: { operator: 'notEquals', values: [] },
-    doesNotInclude: { operator: 'doesNotInclude', value: '' },
     startsWith: { operator: 'startsWith', value: '' },
     isNull: { operator: 'isNull' },
     notNull: { operator: 'notNull' },
@@ -22,6 +21,29 @@ const StringFilterForm = ({ filter, onChange }: StringFilterFormProps) => {
     const filterType = filter.operator;
     switch (filter.operator) {
         case 'equals':
+            return (
+                <TagInput
+                    fill
+                    addOnBlur
+                    tagProps={{ minimal: true }}
+                    values={filter.values}
+                    onAdd={(values) =>
+                        onChange({
+                            ...filter,
+                            values: [...filter.values, ...values],
+                        })
+                    }
+                    onRemove={(value, index) =>
+                        onChange({
+                            ...filter,
+                            values: [
+                                ...filter.values.slice(0, index),
+                                ...filter.values.slice(index + 1),
+                            ],
+                        })
+                    }
+                />
+            );
         case 'notEquals':
             return (
                 <TagInput
@@ -47,10 +69,10 @@ const StringFilterForm = ({ filter, onChange }: StringFilterFormProps) => {
                 />
             );
         case 'isNull':
-        case 'notNull':
             return null;
+        case 'notNull':
+            return <div />;
         case 'startsWith':
-        case 'doesNotInclude':
             return (
                 <InputGroup
                     fill

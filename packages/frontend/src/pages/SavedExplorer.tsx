@@ -26,7 +26,6 @@ const SavedExplorer = () => {
         if (data) {
             setState({
                 chartName: data.name,
-                sorting: false,
                 tableName: data.tableName,
                 dimensions: data.metricQuery.dimensions,
                 metrics: data.metricQuery.metrics,

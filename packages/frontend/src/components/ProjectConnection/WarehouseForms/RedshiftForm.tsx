@@ -15,7 +15,6 @@ const RedshiftForm: FC<{
             <Input
                 name="warehouse.host"
                 label="Host"
-                documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#host-1"
                 rules={{
                     required: 'Required field',
                 }}
@@ -24,7 +23,6 @@ const RedshiftForm: FC<{
             <Input
                 name="warehouse.user"
                 label="User"
-                documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#user-1"
                 rules={{
                     required: 'Required field',
                 }}
@@ -33,7 +31,6 @@ const RedshiftForm: FC<{
             <PasswordInput
                 name="warehouse.password"
                 label="Password"
-                documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#password-1"
                 rules={{
                     required: 'Required field',
                 }}
@@ -42,7 +39,6 @@ const RedshiftForm: FC<{
             <Input
                 name="warehouse.dbname"
                 label="DB name"
-                documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#db-name-1"
                 rules={{
                     required: 'Required field',
                 }}
@@ -51,7 +47,6 @@ const RedshiftForm: FC<{
             <Input
                 name="warehouse.schema"
                 label="Schema"
-                documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#schema-1"
                 rules={{
                     required: 'Required field',
                 }}
@@ -61,7 +56,6 @@ const RedshiftForm: FC<{
                 <NumericInput
                     name="warehouse.port"
                     label="Port"
-                    documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#port-1"
                     rules={{
                         required: 'Required field',
                     }}
@@ -71,7 +65,6 @@ const RedshiftForm: FC<{
                 <NumericInput
                     name="warehouse.threads"
                     label="Threads"
-                    documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#threads-2"
                     rules={{
                         required: 'Required field',
                     }}
@@ -81,7 +74,6 @@ const RedshiftForm: FC<{
                 <NumericInput
                     name="warehouse.keepalivesIdle"
                     label="Keep alive idle (seconds)"
-                    documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#keep-alive-idle-seconds-1"
                     rules={{
                         required: 'Required field',
                     }}
@@ -91,7 +83,6 @@ const RedshiftForm: FC<{
                 <Input
                     name="warehouse.sslmode"
                     label="SSL mode"
-                    documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#ssl-mode-1"
                     disabled={disabled}
                 />
             </FormSection>

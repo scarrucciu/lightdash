@@ -19,7 +19,6 @@ const DbtLocalForm: FC<{ disabled: boolean }> = ({ disabled }) => (
         <Input
             name="dbt.project_dir"
             label="Project directory"
-            documentationUrl="https://docs.lightdash.com/get-started/setup-lightdash/connect-project#local-dbt-project"
             rules={{
                 required: 'Required field',
             }}

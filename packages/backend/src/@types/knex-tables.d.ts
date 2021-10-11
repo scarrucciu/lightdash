@@ -19,6 +19,17 @@ import {
 } from '../database/entities/warehouseCredentials';
 import { ProjectTable, ProjectTableName } from '../database/entities/projects';
 import { SpaceTable, SpaceTableName } from '../database/entities/spaces';
+import {
+    DashboardTable,
+    DashboardsTableName,
+    DashboardTileChartTable,
+    DashboardTileChartTableName,
+    DashboardTilesTableName,
+    DashboardTileTypesTableName,
+    DashboardVersionTable,
+    DashboardTileTable,
+    DashboardVersionsTableName,
+} from '../database/entities/dashboards';
 
 declare module 'knex/types/tables' {
     interface Tables {
@@ -31,5 +42,10 @@ declare module 'knex/types/tables' {
         [ProjectTableName]: ProjectTable;
         [SavedQueryTableCalculationTableName]: SavedQueryTableCalculationTable;
         [SpaceTableName]: SpaceTable;
+        [DashboardsTableName]: DashboardTable;
+        [DashboardVersionsTableName]: DashboardVersionTable;
+        [DashboardTilesTableName]: DashboardTileTable;
+        [DashboardTileTypesTableName]: DashboardTileTypesTable;
+        [DashboardTileChartTableName]: DashboardTileChartTable;
     }
 }

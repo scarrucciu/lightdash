@@ -3,16 +3,6 @@
 Recent and upcoming changes to lightdash
 
 ## Unreleased
-
-
-## [0.8.3] - 2021-10-11
-### Added
-- Add "does not include" in stringfilter
-### Changed
-- Sort data immediately when clicking on column header
-### Fixed
-- Fixed a bug where we had the local dbt option when connecting a project in Cloud and Heroku deployments
-- Fixed the snowflake connection form
 - show warning message for postgres or redshift users
 - filter dimensions and metrics by active fields in table calculation
 - exclude test files from build

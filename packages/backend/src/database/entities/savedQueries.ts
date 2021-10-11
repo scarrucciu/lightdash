@@ -12,6 +12,8 @@ import database from '../database';
 import { getSpace } from './spaces';
 import { NotFoundError } from '../../errors';
 
+export const SavedQueriesTableName = 'saved_queries';
+
 type DbSavedQueryDetails = {
     saved_query_id: number;
     saved_query_uuid: string;

@@ -3,8 +3,6 @@ import { Controller, get, useFormContext } from 'react-hook-form';
 import { FormGroup } from '@blueprintjs/core';
 import { ErrorMessage } from '@hookform/error-message';
 import { ArgumentsOf } from 'common';
-import DocumentationHelpButton from '../DocumentationHelpButton';
-import './InputWrapper.css';
 
 interface InputProps {
     id: string;
@@ -18,7 +16,6 @@ export interface InputWrapperProps {
     disabled?: boolean;
     placeholder?: string;
     defaultValue?: any;
-    documentationUrl?: string;
     rules?: React.ComponentProps<typeof Controller>['rules'];
     render: (
         inputProps: InputProps,
@@ -31,7 +28,6 @@ export interface InputWrapperProps {
 const InputWrapper: FC<InputWrapperProps> = ({
     name,
     defaultValue,
-    documentationUrl,
     label,
     rules,
     render,
@@ -42,21 +38,11 @@ const InputWrapper: FC<InputWrapperProps> = ({
         formState: { errors },
     } = useFormContext();
     const id = `${name}-input`;
-    const requiredLabel = rules?.required ? '(required)' : '(optional)';
-
     return (
         <FormGroup
-            className="input-wrapper"
             label={label}
             labelFor={id}
-            labelInfo={
-                <>
-                    <span style={{ flex: 1 }}>{requiredLabel}</span>
-                    {documentationUrl && (
-                        <DocumentationHelpButton url={documentationUrl} />
-                    )}
-                </>
-            }
+            labelInfo={rules?.required ? '(required)' : '(optional)'}
             intent={get(errors, name) ? 'danger' : 'none'}
             helperText={<ErrorMessage errors={errors} name={name} as="p" />}
         >

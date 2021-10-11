@@ -50,7 +50,6 @@ export const useExplorerRoute = () => {
                         ?.split(',') || [];
                 setState({
                     chartName: '',
-                    sorting: false,
                     tableName: pathParams.tableId,
                     dimensions,
                     metrics,

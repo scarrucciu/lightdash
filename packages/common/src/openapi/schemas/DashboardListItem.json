@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "dashboard_uuid": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "name": {
+            "type": "string"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": ["name", "created_at"]
+}

@@ -13,7 +13,6 @@ const options: { value: StringFilter['operator']; label: string }[] = [
     { value: 'notNull', label: 'is not null' },
     { value: 'equals', label: 'is equal to' },
     { value: 'notEquals', label: 'is not equal to' },
-    { value: 'doesNotInclude', label: 'does not include' },
 ];
 
 type StringFilterGroupFormProps = {
