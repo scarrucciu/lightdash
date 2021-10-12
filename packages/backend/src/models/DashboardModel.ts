@@ -18,6 +18,7 @@ import {
 } from '../database/entities/dashboards';
 import { SavedQueriesTableName } from '../database/entities/savedQueries';
 import { ProjectTableName } from '../database/entities/projects';
+import { SpaceTableName } from '../database/entities/spaces';
 
 type GetDashboardQuery = Pick<
     DashboardTable['base'],
@@ -37,7 +38,7 @@ export class DashboardModel {
     }
 
     private static async getSpace(db: Knex, projectUuid: string) {
-        const [space] = await db('spaces')
+        const [space] = await db(SpaceTableName)
             .innerJoin(
                 ProjectTableName,
                 'projects.project_id',

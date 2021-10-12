@@ -9759,6 +9759,13 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
+knex-mock-client@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/knex-mock-client/-/knex-mock-client-1.5.1.tgz#2c97ce24358d768290a3970532a153b815fb5e9b"
+  integrity sha512-mrcnk5hfCA0xTN0lEndbdbHgeDoaXVb6aK7iayzPPGTeZeu4dRX228EQNS/+7kI4OF6M1wD33Ij3qre0qvUUSg==
+  dependencies:
+    lodash.clonedeep "^4.5.0"
+
 knex@^0.21.5:
   version "0.21.19"
   resolved "https://registry.yarnpkg.com/knex/-/knex-0.21.19.tgz#df504a184eb29e286245839db0867e3ca161af00"

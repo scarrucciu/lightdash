@@ -1,10 +1,16 @@
 import knex from 'knex';
-import mockDb from 'mock-knex';
+import { getTracker, MockClient, Tracker } from 'knex-mock-client';
 import { LightdashMode } from 'common';
 import { DashboardModel } from './DashboardModel';
-import { ProjectTableName } from '../database/entities/projects';
 import { SavedQueriesTableName } from '../database/entities/savedQueries';
 import { createDashboardWithNoChart } from './DashboardModel.mock';
+import {
+    DashboardsTableName,
+    DashboardTileChartTableName,
+    DashboardTilesTableName,
+    DashboardVersionsTableName,
+} from '../database/entities/dashboards';
+import { SpaceTableName } from '../database/entities/spaces';
 
 jest.mock('../config/lightdashConfig', () => ({
     lightdashConfig: {
@@ -19,51 +25,45 @@ jest.mock('../config/lightdashConfig', () => ({
         ],
     },
 }));
+process.env.DEBUG = 'knex:tx';
+const database = knex({ client: MockClient, debug: true });
 
-const database = knex({
-    client: 'pg',
-    migrations: {
-        directory: './src/database/migrations',
-        tableName: 'knex_migrations',
-        extension: 'ts',
-        loadExtensions: ['.ts'],
-    },
-    seeds: {
-        directory: './src/database/seeds/development',
-        extension: 'ts',
-        loadExtensions: ['.ts'],
-    },
-    debug: true,
-});
-
-// Note: this doesn't work, created a ticket in their github: https://github.com/jbrumwell/mock-knex/issues/130
+// Note: this doesn't work, created a ticket in their github: https://github.com/felixmosh/knex-mock-client/issues/5
 describe.skip('DashboardModel', () => {
-    let projectUuid: string;
-    let savedQueryUuid: string;
-    beforeAll(async () => {
-        mockDb.mock(database);
-        await database.migrate.rollback();
-        await database.migrate.latest();
-        await database.seed.run();
-        [projectUuid] = await database(ProjectTableName).select('project_uuid');
-        [savedQueryUuid] = await database(SavedQueriesTableName).select(
-            'saved_query_uuid',
-        );
+    let tracker: Tracker;
+    beforeAll(() => {
+        tracker = getTracker();
     });
-    afterAll(() => {
-        mockDb.unmock(database);
+    beforeEach(() => {
+        tracker.on
+            .select(SpaceTableName)
+            .response([{ space_id: 'my_space_id' }]);
+        tracker.on
+            .select(SavedQueriesTableName)
+            .response([{ space_id: 'my_saved_chart_id' }]);
+    });
+    afterEach(() => {
+        tracker.reset();
     });
     test('should create dashboard', async () => {
+        const insertId = 'my_dashboard_id';
+        tracker.on.insert(DashboardsTableName).response([insertId]);
+        tracker.on
+            .insert(DashboardVersionsTableName)
+            .response(['my_version_id']);
+        tracker.on.insert(DashboardTilesTableName).response([]);
+        tracker.on.insert(DashboardTileChartTableName).response([]);
+
         const model = new DashboardModel({ database });
         const dashboardUuid: string = await model.create(
-            projectUuid,
+            'my_project_uuid',
             createDashboardWithNoChart,
         );
-        const dashboard = await model.getById(dashboardUuid);
-        expect(dashboard).toEqual(
-            expect.objectContaining({
-                ...createDashboardWithNoChart,
-            }),
-        );
+
+        expect(dashboardUuid).toEqual(insertId);
+
+        const insertHistory = tracker.history.insert;
+
+        expect(insertHistory).toHaveLength(4);
     });
 });
