@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "composite": true,
-    "target": "es6",
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "types": ["vite/client", "node"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,11 +18,11 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+//    "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "rootDir": "src",
-    "outDir": "dist"
+    "useDefineForClassFields": true,
+    "experimentalDecorators": true
   },
   "references": [
     {
@@ -30,5 +31,6 @@
   ],
   "include": [
     "src"
-  ]
+  ],
+  "exclude": ["@blueprintjs"]
 }

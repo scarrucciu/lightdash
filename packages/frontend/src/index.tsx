@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '@blueprintjs/datetime/lib/css/blueprint-datetime.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
