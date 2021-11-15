@@ -11,7 +11,7 @@ const PageSpinner: FC = () => (
     >
         <Spinner size={100} />
         <img
-            src={`${process.env.PUBLIC_URL}/favicon-32x32.png`}
+            src={`${import.meta.env.SNOWPACK_PUBLIC_URL}/favicon-32x32.png`}
             alt="Lightdash"
             style={{
                 position: 'absolute',

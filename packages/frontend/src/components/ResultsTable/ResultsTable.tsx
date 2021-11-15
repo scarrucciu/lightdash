@@ -9,7 +9,6 @@ import {
     DraggableStateSnapshot,
     Droppable,
 } from 'react-beautiful-dnd';
-import { CSVLink } from 'react-csv';
 import {
     ColumnInstance,
     HeaderGroup,
@@ -404,23 +403,6 @@ export const ResultsTable: FC<Props> = ({
                         paddingTop: '10px',
                     }}
                 >
-                    <div>
-                        {rows.length > 0 ? (
-                            <CSVLink
-                                role="button"
-                                tabIndex={0}
-                                className="bp3-button"
-                                data={rows.map((row) => row.values)}
-                                filename={`lightdash-${
-                                    name || 'export'
-                                }-${new Date().toISOString().slice(0, 10)}.csv`}
-                                target="_blank"
-                            >
-                                <Icon icon="export" />
-                                <span>Export CSV</span>
-                            </CSVLink>
-                        ) : null}
-                    </div>
                     {pageCount > 1 && (
                         <div
                             style={{

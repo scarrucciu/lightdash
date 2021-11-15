@@ -44,7 +44,9 @@ const AboutFooter = () => {
                     onClick={() => setIsOpen(true)}
                 >
                     <img
-                        src={`${process.env.PUBLIC_URL}/favicon-16x16.png`}
+                        src={`${
+                            import.meta.env.SNOWPACK_PUBLIC_URL
+                        }/favicon-16x16.png`}
                         alt="Lightdash"
                     />
                     <H6 style={{ margin: 0, whiteSpace: 'nowrap' }}>
